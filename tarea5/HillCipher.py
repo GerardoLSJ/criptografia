@@ -1,22 +1,13 @@
 import numpy as np 
 from sympy import Matrix
 
-"""
-USING ASCII
-"""
-
-
 LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
-
 # Llave 
 keyMatrix = [[0] * 3 for i in range(3)] 
-  
 # Mensaje
 messageVector = [[0] for i in range(3)] 
-  
 # Mensaje cifrado
 cipherMatrix = [] # [[0] for i in range(3)] 
-  
 # GENERA LA MATRIZ LLAVE
 def getKeyMatrix(key): 
     k = 0
@@ -44,16 +35,10 @@ def HillCipher(message, key):
             message += "X"
 
     message = list(message)
-    #print(message)
     int_message = [LETTERS.find(x) for x in message] # ord
-    #print(int_message)
     aux = np.array(int_message, dtype=int)
     messageVector = np.reshape(aux,(3,-1)) # % 65
-        #print(messageVector)
-
     mensaje_cifrado = encrypt(messageVector) 
-    # print("cipherMatrix",mensaje_cifrado)
-  
     # Generar texto desde la matriz
     CipherText = [] 
     mensaje_cifrado = np.array(mensaje_cifrado, dtype=int)
@@ -69,8 +54,8 @@ def HillCipher(message, key):
   
 
 def HillDecipher(data, key):
-    mat = Matrix(keyMatrix) # keyMatrix is your basic matrix ndrarray format
-    inv = mat.inv_mod(27) #or any modulo you want
+    mat = Matrix(keyMatrix)
+    inv = mat.inv_mod(27) # cualquier modulo
     res = np.dot(inv, data["cifrado"]) % 27
     flat = res.flatten()
     #print("res",flat)
@@ -82,10 +67,7 @@ def HillDecipher(data, key):
         "mensaje": "".join(DecipherText),
     }
 
-# Driver Code 
-
-# Get the message to  
-# be encrypted 
+#mensaje a encriptar
 mensaje = "SANTIBAÑEZPORMIRAZAHABLARAELESPIRITU"
 
 # Get the key 
