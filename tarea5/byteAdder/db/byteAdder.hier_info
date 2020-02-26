@@ -1,0 +1,150 @@
+|byteAdder
+S3 <= nibbleAdder:inst1.S3
+A3 => nibbleAdder:inst1.A3
+B3 => nibbleAdder:inst1.B3
+A2 => nibbleAdder:inst1.A2
+B2 => nibbleAdder:inst1.B2
+A1 => nibbleAdder:inst1.A1
+B1 => nibbleAdder:inst1.B1
+A0 => nibbleAdder:inst1.A0
+B0 => nibbleAdder:inst1.B0
+S2 <= nibbleAdder:inst1.S2
+S1 <= nibbleAdder:inst1.S1
+S0 <= nibbleAdder:inst1.S0
+Cout <= nibbleAdder:inst.Cout
+A7 => nibbleAdder:inst.A3
+B7 => nibbleAdder:inst.B3
+A6 => nibbleAdder:inst.A2
+B6 => nibbleAdder:inst.B2
+A5 => nibbleAdder:inst.A1
+B5 => nibbleAdder:inst.B1
+A4 => nibbleAdder:inst.A0
+B4 => nibbleAdder:inst.B0
+S7 <= nibbleAdder:inst.S3
+S6 <= nibbleAdder:inst.S2
+S5 <= nibbleAdder:inst.S1
+S4 <= nibbleAdder:inst.S0
+
+
+|byteAdder|nibbleAdder:inst1
+Cout <= bitAdder:inst.Cout
+Cin => bitAdder:inst3.Cin
+A0 => bitAdder:inst3.A
+B0 => bitAdder:inst3.B
+A1 => bitAdder:inst2.A
+B1 => bitAdder:inst2.B
+A2 => bitAdder:inst1.A
+B2 => bitAdder:inst1.B
+A3 => bitAdder:inst.A
+B3 => bitAdder:inst.B
+S0 <= bitAdder:inst3.S
+S1 <= bitAdder:inst2.S
+S2 <= bitAdder:inst1.S
+S3 <= bitAdder:inst.S
+
+
+|byteAdder|nibbleAdder:inst1|bitAdder:inst
+S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Cin => inst1.IN0
+Cin => inst2.IN0
+A => inst.IN0
+A => inst3.IN0
+B => inst.IN1
+B => inst3.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|byteAdder|nibbleAdder:inst1|bitAdder:inst1
+S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Cin => inst1.IN0
+Cin => inst2.IN0
+A => inst.IN0
+A => inst3.IN0
+B => inst.IN1
+B => inst3.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|byteAdder|nibbleAdder:inst1|bitAdder:inst2
+S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Cin => inst1.IN0
+Cin => inst2.IN0
+A => inst.IN0
+A => inst3.IN0
+B => inst.IN1
+B => inst3.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|byteAdder|nibbleAdder:inst1|bitAdder:inst3
+S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Cin => inst1.IN0
+Cin => inst2.IN0
+A => inst.IN0
+A => inst3.IN0
+B => inst.IN1
+B => inst3.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|byteAdder|nibbleAdder:inst
+Cout <= bitAdder:inst.Cout
+Cin => bitAdder:inst3.Cin
+A0 => bitAdder:inst3.A
+B0 => bitAdder:inst3.B
+A1 => bitAdder:inst2.A
+B1 => bitAdder:inst2.B
+A2 => bitAdder:inst1.A
+B2 => bitAdder:inst1.B
+A3 => bitAdder:inst.A
+B3 => bitAdder:inst.B
+S0 <= bitAdder:inst3.S
+S1 <= bitAdder:inst2.S
+S2 <= bitAdder:inst1.S
+S3 <= bitAdder:inst.S
+
+
+|byteAdder|nibbleAdder:inst|bitAdder:inst
+S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Cin => inst1.IN0
+Cin => inst2.IN0
+A => inst.IN0
+A => inst3.IN0
+B => inst.IN1
+B => inst3.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|byteAdder|nibbleAdder:inst|bitAdder:inst1
+S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Cin => inst1.IN0
+Cin => inst2.IN0
+A => inst.IN0
+A => inst3.IN0
+B => inst.IN1
+B => inst3.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|byteAdder|nibbleAdder:inst|bitAdder:inst2
+S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Cin => inst1.IN0
+Cin => inst2.IN0
+A => inst.IN0
+A => inst3.IN0
+B => inst.IN1
+B => inst3.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|byteAdder|nibbleAdder:inst|bitAdder:inst3
+S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Cin => inst1.IN0
+Cin => inst2.IN0
+A => inst.IN0
+A => inst3.IN0
+B => inst.IN1
+B => inst3.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+

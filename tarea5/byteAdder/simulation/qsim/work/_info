@@ -1,0 +1,75 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/intelFPGA_lite/criptografia/tarea5/byteAdder/simulation/qsim
+vbyteAdder
+Z1 !s110 1582684904
+!i10b 1
+!s100 ;5^5Hjj30>]RG8>Li^_O71
+Ikd12GU>hjRo92z3YfION40
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1582684891
+Z4 8byteAdder.vo
+Z5 FbyteAdder.vo
+L0 31
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1582684904.000000
+Z8 !s107 byteAdder.vo|
+Z9 !s90 -work|work|byteAdder.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+nbyte@adder
+vbyteAdder_vlg_vec_tst
+!s110 1582684905
+!i10b 1
+!s100 2T5V6b293VDi;E:bS0HmQ1
+IUiO9A[BVYU>f<5RLKmS^K0
+R2
+R0
+w1582684888
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11
+nbyte@adder_vlg_vec_tst
+vhard_block
+R1
+!i10b 1
+!s100 iO3GcNodfl4jTUi8DPo_U3
+I_ebW:?]3kXNJ@oNf28_[]3
+R2
+R0
+R3
+R4
+R5
+L0 909
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
