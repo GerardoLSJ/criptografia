@@ -1,6 +1,13 @@
 import numpy as np 
 from sympy import Matrix
 
+"""
+USING ASCII
+"""
+
+
+LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
+
 # Llave 
 keyMatrix = [[0] * 3 for i in range(3)] 
   
@@ -15,13 +22,13 @@ def getKeyMatrix(key):
     k = 0
     for i in range(3): 
         for j in range(3): 
-            keyMatrix[i][j] = ord(key[k]) % 65
+            keyMatrix[i][j] = LETTERS.find(key[k]) #ord(key[k]) % 65
             k += 1
     return keyMatrix
   
 # Following function encrypts the message 
 def encrypt(messageVector): 
-    cipherMatrix = (Matrix(keyMatrix) * Matrix(messageVector)) % 26
+    cipherMatrix = (Matrix(keyMatrix) * Matrix(messageVector)) % 27
     return cipherMatrix.tolist()
 
 def HillCipher(message, key): 
@@ -38,10 +45,10 @@ def HillCipher(message, key):
 
     message = list(message)
     #print(message)
-    int_message = [ord(x) for x in message]
+    int_message = [LETTERS.find(x) for x in message] # ord
     #print(int_message)
     aux = np.array(int_message, dtype=int)
-    messageVector = np.reshape(aux,(3,-1)) % 65
+    messageVector = np.reshape(aux,(3,-1)) # % 65
         #print(messageVector)
 
     mensaje_cifrado = encrypt(messageVector) 
@@ -53,7 +60,7 @@ def HillCipher(message, key):
     # print("numpy", mensaje_cifrado)
     flat = mensaje_cifrado.flatten()
     for i in range(len(flat)): 
-        CipherText.append(chr(flat[i] + 65)) 
+        CipherText.append(LETTERS[flat[i]])
 
     return {
         "mensaje": "".join(CipherText),
@@ -63,13 +70,13 @@ def HillCipher(message, key):
 
 def HillDecipher(data, key):
     mat = Matrix(keyMatrix) # keyMatrix is your basic matrix ndrarray format
-    inv = mat.inv_mod(26) #or any modulo you want
-    res = np.dot(inv, data["cifrado"]) % 26
+    inv = mat.inv_mod(27) #or any modulo you want
+    res = np.dot(inv, data["cifrado"]) % 27
     flat = res.flatten()
     #print("res",flat)
     DecipherText = [] 
     for i in range(len(flat)): 
-        DecipherText.append(chr(flat[i] + 65)) 
+        DecipherText.append(LETTERS[flat[i]]) 
   
     return {
         "mensaje": "".join(DecipherText),
@@ -79,13 +86,13 @@ def HillDecipher(data, key):
 
 # Get the message to  
 # be encrypted 
-mensaje = "PORMIRAZAHABLARAELESPIRITU"
+mensaje = "SANTIBAÑEZPORMIRAZAHABLARAELESPIRITU"
 
 # Get the key 
 key = "GYBNQKURP"
-print("mensaje",mensaje)
+print("\nMENSAJE DE ENTRADA: \t\t",mensaje)
 data = HillCipher(mensaje, key) 
-print("cifrado",data["mensaje"])
+print("\nCIFRADO: \t\t\t",data["mensaje"])
 descifrado = HillDecipher(data, key)
-print(descifrado)
+print("\nMENSAJE DE DESCIFRADO: \t\t", descifrado["mensaje"])
 # descifrado = getKeyMatrix()
