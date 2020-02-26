@@ -4,43 +4,55 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "S3",
-					"strict" : false
-				},
-				{
-					"name" : "S2",
-					"strict" : false
-				},
-				{
-					"name" : "S1",
-					"strict" : false
-				},
-				{
-					"name" : "S0",
-					"strict" : false
-				},
-				{
 					"name" : "Cout",
 					"strict" : false
 				},
 				{
-					"name" : "S7",
+					"name" : "finalOutput[7]",
 					"strict" : false
 				},
 				{
-					"name" : "S6",
+					"name" : "finalOutput[6]",
 					"strict" : false
 				},
 				{
-					"name" : "S5",
+					"name" : "finalOutput[5]",
 					"strict" : false
 				},
 				{
-					"name" : "S4",
+					"name" : "finalOutput[4]",
 					"strict" : false
 				},
 				{
-					"name" : "B3",
+					"name" : "finalOutput[3]",
+					"strict" : false
+				},
+				{
+					"name" : "finalOutput[2]",
+					"strict" : false
+				},
+				{
+					"name" : "finalOutput[1]",
+					"strict" : false
+				},
+				{
+					"name" : "finalOutput[0]",
+					"strict" : false
+				},
+				{
+					"name" : "A7",
+					"strict" : false
+				},
+				{
+					"name" : "A6",
+					"strict" : false
+				},
+				{
+					"name" : "A5",
+					"strict" : false
+				},
+				{
+					"name" : "A4",
 					"strict" : false
 				},
 				{
@@ -52,55 +64,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "B2",
-					"strict" : false
-				},
-				{
-					"name" : "B0",
-					"strict" : false
-				},
-				{
-					"name" : "A0",
-					"strict" : false
-				},
-				{
 					"name" : "A1",
 					"strict" : false
 				},
 				{
-					"name" : "B1",
-					"strict" : false
-				},
-				{
-					"name" : "A6",
-					"strict" : false
-				},
-				{
-					"name" : "B6",
-					"strict" : false
-				},
-				{
-					"name" : "A4",
-					"strict" : false
-				},
-				{
-					"name" : "B4",
-					"strict" : false
-				},
-				{
-					"name" : "A5",
-					"strict" : false
-				},
-				{
-					"name" : "B5",
-					"strict" : false
-				},
-				{
-					"name" : "A7",
-					"strict" : false
-				},
-				{
-					"name" : "B7",
+					"name" : "A0",
 					"strict" : false
 				}
 			]

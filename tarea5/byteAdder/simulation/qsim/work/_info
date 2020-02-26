@@ -9,67 +9,179 @@ z2
 cModel Technology
 Z0 dC:/intelFPGA_lite/criptografia/tarea5/byteAdder/simulation/qsim
 vbyteAdder
-Z1 !s110 1582684904
+Z1 !s110 1582687725
 !i10b 1
-!s100 ;5^5Hjj30>]RG8>Li^_O71
-Ikd12GU>hjRo92z3YfION40
+!s100 j_9o>^FNLm;^S[DKJ5GNF3
+I@`TX0oID@YS?AfeI2Dzg52
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1582684891
-Z4 8byteAdder.vo
-Z5 FbyteAdder.vo
+w1582687720
+8byteAdder.vo
+FbyteAdder.vo
 L0 31
-Z6 OV;L;10.5b;63
+Z3 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1582684904.000000
-Z8 !s107 byteAdder.vo|
-Z9 !s90 -work|work|byteAdder.vo|
+Z4 !s108 1582687725.000000
+!s107 byteAdder.vo|
+!s90 -work|work|byteAdder.vo|
 !i113 1
-Z10 o-work work
-Z11 tCvgOpt 0
+Z5 o-work work
+Z6 tCvgOpt 0
 nbyte@adder
-vbyteAdder_vlg_vec_tst
-!s110 1582684905
-!i10b 1
-!s100 2T5V6b293VDi;E:bS0HmQ1
-IUiO9A[BVYU>f<5RLKmS^K0
-R2
+Ebyteadder
+Z7 w1582692726
+Z8 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z9 DPx11 fiftyfivenm 21 fiftyfivenm_atom_pack 0 22 7d5Xo;QBOkc31OfQTzSXV0
+Z10 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z11 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z12 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z13 DPx11 fiftyfivenm 22 fiftyfivenm_components 0 22 IfY7Mh2WPBc;@7U@3<I^[0
 R0
-w1582684888
-8Waveform.vwf.vt
-FWaveform.vwf.vt
-L0 29
-R6
-r1
-!s85 0
-31
-R7
-!s107 Waveform.vwf.vt|
-!s90 -work|work|Waveform.vwf.vt|
+Z14 8byteAdder.vho
+Z15 FbyteAdder.vho
+l0
+L88
+VoPeh_0hUBH9Z;WB?oQk>63
+!s100 kbWZ`7J_O]SCPGYMW`AK33
+Z16 OV;C;10.5b;63
+32
+Z17 !s110 1582692728
+!i10b 1
+Z18 !s108 1582692728.000000
+Z19 !s90 -work|work|byteAdder.vho|
+Z20 !s107 byteAdder.vho|
 !i113 1
+R5
+Z21 tExplicit 1 CvgOpt 0
+Astructure
+R8
+R9
 R10
 R11
-nbyte@adder_vlg_vec_tst
-vhard_block
+R12
+R13
+DEx4 work 9 byteadder 0 22 oPeh_0hUBH9Z;WB?oQk>63
+l569
+L123
+VbRa8d:i^`blQb_7T0hOI:1
+!s100 OTP=XIRG<6mkGIYA8i:F90
+R16
+32
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R5
+R21
+Ebyteadder_vhd_vec_tst
+Z22 w1582692724
+R11
+R12
+R0
+Z23 8Waveform2.vwf.vht
+Z24 FWaveform2.vwf.vht
+l0
+L31
+VTA6USd=<=A=ALI6jJPLLV0
+!s100 C8?6K6MF_nE0Zo`nh12dC0
+R16
+32
+Z25 !s110 1582692729
+!i10b 1
+R18
+Z26 !s90 -work|work|Waveform2.vwf.vht|
+Z27 !s107 Waveform2.vwf.vht|
+!i113 1
+R5
+R21
+Abyteadder_arch
+R11
+R12
+Z28 DEx4 work 21 byteadder_vhd_vec_tst 0 22 TA6USd=<=A=ALI6jJPLLV0
+l60
+L33
+V2mnlm<6GARed6EhAc?Y_z0
+!s100 gLGZ=o<l<OTM5LbX^7]kU2
+R16
+32
+R25
+!i10b 1
+R18
+R26
+R27
+!i113 1
+R5
+R21
+vbyteAdder_vlg_vec_tst
 R1
 !i10b 1
-!s100 iO3GcNodfl4jTUi8DPo_U3
-I_ebW:?]3kXNJ@oNf28_[]3
+!s100 1lB50k5hk6hG]F``aG1j=2
+I<][Nh1nkFPEO]oD51YK563
 R2
 R0
+w1582687718
+8Waveform1.vwf.vt
+FWaveform1.vwf.vt
+L0 29
 R3
-R4
-R5
-L0 909
-R6
 r1
 !s85 0
 31
+R4
+!s107 Waveform1.vwf.vt|
+!s90 -work|work|Waveform1.vwf.vt|
+!i113 1
+R5
+R6
+nbyte@adder_vlg_vec_tst
+Ehard_block
 R7
 R8
 R9
-!i113 1
 R10
 R11
+R12
+R13
+R0
+R14
+R15
+l0
+L34
+V8_BbEmGd;OHS6h@;gFc7W3
+!s100 ROH=D<N4CT6aCZ<37A[_?0
+R16
+32
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R5
+R21
+Astructure
+R8
+R9
+R10
+R11
+R12
+R13
+DEx4 work 10 hard_block 0 22 8_BbEmGd;OHS6h@;gFc7W3
+l75
+L53
+Vg=W`CQ>24lhYF71zFSkY43
+!s100 zW6ML5NVY?Ai`]`n2XhME3
+R16
+32
+R17
+!i10b 1
+R18
+R19
+R20
+!i113 1
+R5
+R21

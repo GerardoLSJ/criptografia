@@ -1,5 +1,5 @@
 Analysis & Synthesis report for byteAdder
-Tue Feb 25 20:39:25 2020
+Tue Feb 25 22:48:35 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -14,9 +14,10 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  9. Parameter Settings for Inferred Entity Instance: opModulo:inst19|lpm_divide:Mod0
+ 10. Post-Synthesis Netlist Statistics for Top Partition
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -42,16 +43,16 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Feb 25 20:39:25 2020       ;
+; Analysis & Synthesis Status        ; Successful - Tue Feb 25 22:48:35 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; byteAdder                                   ;
 ; Top-level Entity Name              ; byteAdder                                   ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 18                                          ;
-;     Total combinational functions  ; 18                                          ;
+; Total logic elements               ; 298                                         ;
+;     Total combinational functions  ; 298                                         ;
 ;     Dedicated logic registers      ; 0                                           ;
 ; Total registers                    ; 0                                           ;
-; Total pins                         ; 25                                          ;
+; Total pins                         ; 17                                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -163,66 +164,80 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                              ;
-+----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                    ; Library ;
-+----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------+---------+
-; bitAdder.bdf                     ; yes             ; User Block Diagram/Schematic File  ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/bitAdder.bdf    ;         ;
-; nibbleAdder.bdf                  ; yes             ; User Block Diagram/Schematic File  ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/nibbleAdder.bdf ;         ;
-; byteAdder.bdf                    ; yes             ; User Block Diagram/Schematic File  ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/byteAdder.bdf   ;         ;
-+----------------------------------+-----------------+------------------------------------+-----------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                         ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                               ; Library ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
+; bitAdder.bdf                     ; yes             ; User Block Diagram/Schematic File  ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/bitAdder.bdf               ;         ;
+; nibbleAdder.bdf                  ; yes             ; User Block Diagram/Schematic File  ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/nibbleAdder.bdf            ;         ;
+; byteAdder.bdf                    ; yes             ; User Block Diagram/Schematic File  ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/byteAdder.bdf              ;         ;
+; opModulo.vhd                     ; yes             ; User VHDL File                     ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd               ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                       ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc      ;         ;
+; db/lpm_divide_25o.tdf            ; yes             ; Auto-Generated Megafunction        ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/lpm_divide_25o.tdf      ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction        ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/abs_divider_4dg.tdf     ;         ;
+; db/alt_u_div_ske.tdf             ; yes             ; Auto-Generated Megafunction        ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/alt_u_div_ske.tdf       ;         ;
+; db/add_sub_t3c.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/add_sub_t3c.tdf         ;         ;
+; db/add_sub_u3c.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/add_sub_u3c.tdf         ;         ;
+; db/lpm_abs_8b9.tdf               ; yes             ; Auto-Generated Megafunction        ; C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/lpm_abs_8b9.tdf         ;         ;
++----------------------------------+-----------------+------------------------------------+----------------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimated Total logic elements              ; 18       ;
-;                                             ;          ;
-; Total combinational functions               ; 18       ;
-; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 8        ;
-;     -- 3 input functions                    ; 6        ;
-;     -- <=2 input functions                  ; 4        ;
-;                                             ;          ;
-; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 18       ;
-;     -- arithmetic mode                      ; 0        ;
-;                                             ;          ;
-; Total registers                             ; 0        ;
-;     -- Dedicated logic registers            ; 0        ;
-;     -- I/O registers                        ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 25       ;
-;                                             ;          ;
-; Embedded Multiplier 9-bit elements          ; 0        ;
-;                                             ;          ;
-; Maximum fan-out node                        ; A2~input ;
-; Maximum fan-out                             ; 3        ;
-; Total fan-out                               ; 92       ;
-; Average fan-out                             ; 1.35     ;
-+---------------------------------------------+----------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                                                                                                        ;
++---------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+; Resource                                    ; Usage                                                                                                                ;
++---------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+; Estimated Total logic elements              ; 298                                                                                                                  ;
+;                                             ;                                                                                                                      ;
+; Total combinational functions               ; 298                                                                                                                  ;
+; Logic element usage by number of LUT inputs ;                                                                                                                      ;
+;     -- 4 input functions                    ; 47                                                                                                                   ;
+;     -- 3 input functions                    ; 100                                                                                                                  ;
+;     -- <=2 input functions                  ; 151                                                                                                                  ;
+;                                             ;                                                                                                                      ;
+; Logic elements by mode                      ;                                                                                                                      ;
+;     -- normal mode                          ; 176                                                                                                                  ;
+;     -- arithmetic mode                      ; 122                                                                                                                  ;
+;                                             ;                                                                                                                      ;
+; Total registers                             ; 0                                                                                                                    ;
+;     -- Dedicated logic registers            ; 0                                                                                                                    ;
+;     -- I/O registers                        ; 0                                                                                                                    ;
+;                                             ;                                                                                                                      ;
+; I/O pins                                    ; 17                                                                                                                   ;
+;                                             ;                                                                                                                      ;
+; Embedded Multiplier 9-bit elements          ; 0                                                                                                                    ;
+;                                             ;                                                                                                                      ;
+; Maximum fan-out node                        ; opModulo:inst19|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider|op_21~60 ;
+; Maximum fan-out                             ; 90                                                                                                                   ;
+; Total fan-out                               ; 784                                                                                                                  ;
+; Average fan-out                             ; 2.36                                                                                                                 ;
++---------------------------------------------+----------------------------------------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                        ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                         ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+-------------+--------------+
-; |byteAdder                 ; 18 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 25   ; 0            ; 0          ; |byteAdder                                  ; byteAdder   ; work         ;
-;    |nibbleAdder:inst1|     ; 8 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst1                ; nibbleAdder ; work         ;
-;       |bitAdder:inst1|     ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst1|bitAdder:inst1 ; bitAdder    ; work         ;
-;       |bitAdder:inst2|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst1|bitAdder:inst2 ; bitAdder    ; work         ;
-;       |bitAdder:inst3|     ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst1|bitAdder:inst3 ; bitAdder    ; work         ;
-;       |bitAdder:inst|      ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst1|bitAdder:inst  ; bitAdder    ; work         ;
-;    |nibbleAdder:inst|      ; 10 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst                 ; nibbleAdder ; work         ;
-;       |bitAdder:inst1|     ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst|bitAdder:inst1  ; bitAdder    ; work         ;
-;       |bitAdder:inst2|     ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst|bitAdder:inst2  ; bitAdder    ; work         ;
-;       |bitAdder:inst3|     ; 3 (3)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst|bitAdder:inst3  ; bitAdder    ; work         ;
-;       |bitAdder:inst|      ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst|bitAdder:inst   ; bitAdder    ; work         ;
-+----------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+---------------------------------------------+-------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                     ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                                                                    ; Entity Name     ; Library Name ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
+; |byteAdder                               ; 298 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 17   ; 0            ; 0          ; |byteAdder                                                                                                             ; byteAdder       ; work         ;
+;    |nibbleAdder:inst1|                   ; 2 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst1                                                                                           ; nibbleAdder     ; work         ;
+;       |bitAdder:inst1|                   ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst1|bitAdder:inst1                                                                            ; bitAdder        ; work         ;
+;       |bitAdder:inst2|                   ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst1|bitAdder:inst2                                                                            ; bitAdder        ; work         ;
+;    |nibbleAdder:inst|                    ; 6 (0)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst                                                                                            ; nibbleAdder     ; work         ;
+;       |bitAdder:inst1|                   ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst|bitAdder:inst1                                                                             ; bitAdder        ; work         ;
+;       |bitAdder:inst2|                   ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst|bitAdder:inst2                                                                             ; bitAdder        ; work         ;
+;       |bitAdder:inst3|                   ; 1 (1)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst|bitAdder:inst3                                                                             ; bitAdder        ; work         ;
+;       |bitAdder:inst|                    ; 2 (2)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|nibbleAdder:inst|bitAdder:inst                                                                              ; bitAdder        ; work         ;
+;    |opModulo:inst19|                     ; 290 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|opModulo:inst19                                                                                             ; opModulo        ; work         ;
+;       |lpm_divide:Mod0|                  ; 290 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|opModulo:inst19|lpm_divide:Mod0                                                                             ; lpm_divide      ; work         ;
+;          |lpm_divide_25o:auto_generated| ; 290 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|opModulo:inst19|lpm_divide:Mod0|lpm_divide_25o:auto_generated                                               ; lpm_divide_25o  ; work         ;
+;             |abs_divider_4dg:divider|    ; 290 (0)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|opModulo:inst19|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider                       ; abs_divider_4dg ; work         ;
+;                |alt_u_div_ske:divider|   ; 290 (290)           ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |byteAdder|opModulo:inst19|lpm_divide:Mod0|lpm_divide_25o:auto_generated|abs_divider_4dg:divider|alt_u_div_ske:divider ; alt_u_div_ske   ; work         ;
++------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -241,20 +256,48 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++----------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: opModulo:inst19|lpm_divide:Mod0 ;
++------------------------+----------------+----------------------------------------+
+; Parameter Name         ; Value          ; Type                                   ;
++------------------------+----------------+----------------------------------------+
+; LPM_WIDTHN             ; 32             ; Untyped                                ;
+; LPM_WIDTHD             ; 32             ; Untyped                                ;
+; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                                ;
+; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                                ;
+; LPM_PIPELINE           ; 0              ; Untyped                                ;
+; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                ;
+; CBXI_PARAMETER         ; lpm_divide_25o ; Untyped                                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                         ;
++------------------------+----------------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 25                          ;
-; cycloneiii_lcell_comb ; 18                          ;
-;     normal            ; 18                          ;
-;         2 data inputs ; 4                           ;
-;         3 data inputs ; 6                           ;
-;         4 data inputs ; 8                           ;
+; boundary_port         ; 17                          ;
+; cycloneiii_lcell_comb ; 298                         ;
+;     arith             ; 122                         ;
+;         1 data inputs ; 24                          ;
+;         2 data inputs ; 29                          ;
+;         3 data inputs ; 69                          ;
+;     normal            ; 176                         ;
+;         0 data inputs ; 4                           ;
+;         2 data inputs ; 94                          ;
+;         3 data inputs ; 31                          ;
+;         4 data inputs ; 47                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.00                        ;
-; Average LUT depth     ; 4.71                        ;
+; Max LUT depth         ; 22.60                       ;
+; Average LUT depth     ; 21.09                       ;
 +-----------------------+-----------------------------+
 
 
@@ -263,7 +306,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:07     ;
 +----------------+--------------+
 
 
@@ -273,7 +316,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Feb 25 20:38:57 2020
+    Info: Processing started: Tue Feb 25 22:47:53 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off byteAdder -c byteAdder
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -283,21 +326,50 @@ Info (12021): Found 1 design units, including 1 entities, in source file nibblea
     Info (12023): Found entity 1: nibbleAdder
 Info (12021): Found 1 design units, including 1 entities, in source file byteadder.bdf
     Info (12023): Found entity 1: byteAdder
+Info (12021): Found 2 design units, including 1 entities, in source file opmodulo.vhd
+    Info (12022): Found design unit 1: opModulo-Behavioral File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 17
+    Info (12023): Found entity 1: opModulo File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 5
 Info (12127): Elaborating entity "byteAdder" for the top level hierarchy
-Info (12128): Elaborating entity "nibbleAdder" for hierarchy "nibbleAdder:inst1"
+Info (12128): Elaborating entity "nibbleAdder" for hierarchy "nibbleAdder:inst"
 Warning (275011): Block or symbol "bitAdder" of instance "inst2" overlaps another block or symbol
-Info (12128): Elaborating entity "bitAdder" for hierarchy "nibbleAdder:inst1|bitAdder:inst"
+Info (12128): Elaborating entity "bitAdder" for hierarchy "nibbleAdder:inst|bitAdder:inst"
+Info (12128): Elaborating entity "opModulo" for hierarchy "opModulo:inst19"
+Warning (10540): VHDL Signal Declaration warning at opModulo.vhd(19): used explicit default value for signal "totalInput" because signal was never assigned a value File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 19
+Warning (10492): VHDL Process Statement warning at opModulo.vhd(26): signal "totalInput" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 26
+Warning (10492): VHDL Process Statement warning at opModulo.vhd(27): signal "input" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 27
+Warning (10492): VHDL Process Statement warning at opModulo.vhd(28): signal "modResult" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 28
+Info (278001): Inferred 1 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "opModulo:inst19|Mod0" File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 27
+Info (12130): Elaborated megafunction instantiation "opModulo:inst19|lpm_divide:Mod0" File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 27
+Info (12133): Instantiated megafunction "opModulo:inst19|lpm_divide:Mod0" with the following parameter: File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/opModulo.vhd Line: 27
+    Info (12134): Parameter "LPM_WIDTHN" = "32"
+    Info (12134): Parameter "LPM_WIDTHD" = "32"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_25o.tdf
+    Info (12023): Found entity 1: lpm_divide_25o File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/lpm_divide_25o.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
+    Info (12023): Found entity 1: abs_divider_4dg File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/abs_divider_4dg.tdf Line: 26
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ske.tdf
+    Info (12023): Found entity 1: alt_u_div_ske File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/alt_u_div_ske.tdf Line: 26
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_t3c.tdf
+    Info (12023): Found entity 1: add_sub_t3c File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/add_sub_t3c.tdf Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_u3c.tdf
+    Info (12023): Found entity 1: add_sub_u3c File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/add_sub_u3c.tdf Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_8b9.tdf
+    Info (12023): Found entity 1: lpm_abs_8b9 File: C:/intelFPGA_lite/criptografia/tarea5/byteAdder/db/lpm_abs_8b9.tdf Line: 24
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 43 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 16 input pins
+Info (21057): Implemented 315 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 8 input pins
     Info (21059): Implemented 9 output pins
-    Info (21061): Implemented 18 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4743 megabytes
-    Info: Processing ended: Tue Feb 25 20:39:25 2020
-    Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:00:40
+    Info (21061): Implemented 298 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4841 megabytes
+    Info: Processing ended: Tue Feb 25 22:48:36 2020
+    Info: Elapsed time: 00:00:43
+    Info: Total CPU time (on all processors): 00:01:08
 
 

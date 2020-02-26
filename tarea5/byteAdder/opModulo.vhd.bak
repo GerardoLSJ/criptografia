@@ -1,0 +1,29 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity opModulo is
+	Port( S0 : in STD_LOGIC;
+			S1 : in STD_LOGIC;
+			S2 : in STD_LOGIC;
+			S3 : in STD_LOGIC;
+			S4 : in STD_LOGIC;
+			S5 : in STD_LOGIC;
+			S6 : in STD_LOGIC;
+			S7 : in STD_LOGIC;
+			finalOutput : out STD_LOGIC_VECTOR(7 downto 0));
+end opModulo;
+
+architecture Behavioral of opModulo is
+
+	signal totalInput : std_logic_vector (7 downto 0) := S0 & S1 & S2 & S3 & S4 & S5 & S6 & S7;
+--	constant A : std_logic_vector(1 downto 0) := B"00";
+--	constant B : std_logic_vector(1 downto 0) := B"01";
+--	constant C : std_logic_vector(1 downto 0) := B"10";
+--	constant D : std_logic_vector(1 downto 0) := B"11";
+	
+	begin
+	process
+		begin
+			finalOutput := totalInput;
+	end process;
+end Behavioral;
