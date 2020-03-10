@@ -1,7 +1,11 @@
-# Implementation of Affine Cipher in Python 
-
-
-
+'''
+@title: CRIPTOGRAFÍA. TAREA 6. ALGORITMO DE CIFRADO Y DESCIFRADO POR EL MÉTODO AFFIN
+@authors: Luis Gerardo López S. Jiménez, Marco A. Moreno Guerra
+@date_creation: 06/03/2020
+@date_last_update: 09/03/2020
+@comments: 
+	This code requires python 3 to be execute.
+'''
 LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
 
 # Extended Euclidean Algorithm for finding modular inverse 
@@ -22,7 +26,6 @@ def modinv(a, m):
 	else: 
 		return x % m 
 
-
 # affine cipher encrytion function 
 # returns the cipher text 
 def affine_encrypt(text, a, b): 
@@ -34,8 +37,6 @@ def affine_encrypt(text, a, b):
 		m = (a*LETTERS.find(char) + b) % 27
 		result += LETTERS[m]
 	return result
-
-
 
 # affine cipher decryption function 
 # returns original text 
@@ -50,23 +51,20 @@ def affine_decrypt(cipher, a, b):
 		result += LETTERS[p]
 	return result
 
-
 # Driver Code to test the above functions 
 def main(): 
 	# declaring text and key 
-	text = 'AFFINECIPHERSANTIBAÑEZ'
+	text = 'PORMIRAZAHABLARAELESPIRITU'
 	a = 17
 	b = 20
 
 	# calling encryption function 
 	affine_encrypted_text = affine_encrypt(text, a, b) 
 
-	print('Encrypted Text: {}'.format( affine_encrypted_text )) 
+	print('Plain text: {}'.format(text))
+	print('Encrypted Text: {}'.format(affine_encrypted_text)) 
+	print('Decrypted Text: {}'.format(affine_decrypt(affine_encrypted_text, a, b))) 
 
-	# calling decryption function 
-	print('Decrypted Text: {}'.format( affine_decrypt(affine_encrypted_text, a, b) )) 
-
-
+# Code execution
 if __name__ == '__main__': 
 	main() 
-

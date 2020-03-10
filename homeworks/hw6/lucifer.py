@@ -2,8 +2,9 @@
 @title: CRIPTOGRAFÍA. TAREA 6. ALGORITMO DE CIFRADO Y DESCIFRADO LUCIFFER
 @authors: Luis Gerardo López S. Jiménez, Marco A. Moreno Guerra
 @date_creation: 06/03/2020
-@date_last_update: 08/03/2020
+@date_last_update: 09/03/2020
 @comments: 
+	This code requires python 3 to be execute.
 	To get more detailed process' information, uncomment print lines: 32, 36, 46, 50, 55, 71, 81.
 	There are some global constants at the beginning that facilite the change of values.
 '''
@@ -95,15 +96,9 @@ def main():
 	print('Decrypt permute order: {}'.format(permute_order_decrypt))
 
 	# RESULTS (SUMMARY)
-	print('\nPlaint text: {}'.format(PLAIN_TEXT))
+	print('Plain text: {}'.format(PLAIN_TEXT))
 	print('Encrypted text: {}'.format(lucifer_encrypted_text))
 	print('Decrypted Text: {}'.format(lucifer_decrypt(lucifer_encrypted_text, permute_order_decrypt, SHIFT, ROUNDS))) 
-	'''
-	hola mund
-	ipmb mund
-	bpim mund
-	mund bpim
-	'''
 
 # Code execution
 if __name__ == '__main__': 
