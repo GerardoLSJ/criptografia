@@ -269,8 +269,8 @@ class des():
         return self.run(key, text, DECRYPT, padding)
     
 if __name__ == '__main__':
-    key = "ABCDEFG123456"
-    text= "Hello world! Santibañez"
+    key = "Santiago"
+    text= "Data Encryption Standard"
     d = des()
     r = d.encrypt(key,text,padding=True)
     r2 = d.decrypt(key,r,padding=True)
