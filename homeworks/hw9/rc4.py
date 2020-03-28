@@ -53,22 +53,29 @@ class RC4():
 
         # ENCRIPTAR
         if(self.action == 1):
-            in_hex = list()
+            tmp_states = list()
             for c in self.message:
-                value = int(ord(c) ^ next(keystream))
-                in_hex.append(value)
+                current_state = next(keystream)
+                tmp_states.append(current_state)  # CODE REQUIREMENT NOT FOR THE ALGORITHM 
+                value = int(ord(c) ^ current_state)
                 result += str(hex(value))
+            print("\nCIFRANDO")
+            print("ESTADO INICIAL: ", tmp_states[0])
+            print("ESTADO FINAL: ", tmp_states[len(tmp_states)-1])
             return result
 
         # DESENCRIPTAR
         elif(self.action == 0):
-            in_hex = list()
+            tmp_states = list()
             self.message = self.hex_to_bytes(self.message)
-            #print("DES",self.message)
             for item in self.message:
-                in_hex.append(int(item,16))
-                value = int(int(item,16) ^ next(keystream))
+                current_state = next(keystream)
+                tmp_states.append(current_state)  # CODE REQUIREMENT NOT FOR THE ALGORITHM 
+                value = int(int(item,16) ^ current_state)
                 result += chr(value)
+            print("\nDESCIFRANDO")
+            print("ESTADO INICIAL: ", tmp_states[0])
+            print("ESTADO FINAL: ", tmp_states[len(tmp_states)-1])
             return result
 
 
@@ -102,6 +109,7 @@ if __name__ == '__main__':
     #message = 'pedia'
     message = "POR MI RAZA HABLARA EL ESPIRITU"
     key = "EFCDAB8967543201"
+    print("-------------")
     print("\nMensaje a cifrar: " + message)
     encrypt = RC4(key,message,ENCRYPT)
     ciphered = encrypt.run()
@@ -111,4 +119,4 @@ if __name__ == '__main__':
     
     print("\nCIFRADO: " + hex_mask(ciphered))
     print("\nDESCIFRADO: " + deciphered)
-    print("")
+    print("-------------\n")
