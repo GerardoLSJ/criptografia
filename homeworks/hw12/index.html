@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/components/mode-ctr.js"></script>
+    <script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/components/pad-nopadding.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" integrity="sha256-6rXZCnFzbyZ685/fMsqoxxZz/QZwMnmwHg+SsNe+C/w=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+        <p> Ciphertext in HEX: </p>
+        <p id="id"> </p>
+        <p> Ciphertext in BASE64: </p>
+        <p id="id2"> </p>
+        <p> PlainText: </p>
+        <p id="decrypt"></p>
+
+
+
+
+</body>
+
+<script>
+
+    var block = `
+    6bc1bee22e409f96e93d7e117393172a 
+    ae2d8a571e03ac9c9eb76fac45af8e51 
+    30c81c46a35ce411e5fbc1191a0a52ef 
+    f69f2445df4f9b17ad2b417be66c3710`
+    var key = CryptoJS.enc.Hex.parse('2b7e151628aed2a6abf7158809cf4f3c');
+    var iv = CryptoJS.enc.Hex.parse('f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff');
+    var texto = "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710"
+
+    var encrypted = CryptoJS.AES.encrypt(texto, key, {
+        mode: CryptoJS.mode.CTR,
+        iv: iv,
+        padding: CryptoJS.pad.NoPadding
+    });
+    console.warn(encrypted.ciphertext.toString())
+    console.warn(encrypted.toString())
+    document.getElementById("id").innerHTML = encrypted.ciphertext.toString();
+    document.getElementById("id2").innerHTML = encrypted.toString();
+
+    var decrypted = CryptoJS.AES.decrypt(encrypted, key, {
+        mode: CryptoJS.mode.CTR,
+        iv: iv,
+        padding: CryptoJS.pad.NoPadding
+    });
+
+    console.log(decrypted.toString(CryptoJS.enc.Utf8))
+    document.getElementById("decrypt").innerHTML = decrypted.toString(CryptoJS.enc.Utf8); // text can be a random lenght
+</script>
+
+
+</html>

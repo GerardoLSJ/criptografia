@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 '''
 @title: CRIPTOGRAFÍA. TAREA 9. RC4S
-@authors: Luis Gerardo López S. Jiménez, Marco A. Moreno Guerra
+@authors: Luis Gerardo López S. Jiménez
 @date_creation: 27/03/2020
 @date_last_update: 27/03/2020
 @comments: 
@@ -76,6 +76,7 @@ class RC4():
             print("\nDESCIFRANDO")
             print("ESTADO INICIAL: ", tmp_states[0])
             print("ESTADO FINAL: ", tmp_states[len(tmp_states)-1])
+            print("TODOS LOS ESTADOS: ", tmp_states)
             return result
 
 
