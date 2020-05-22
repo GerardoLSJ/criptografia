@@ -18,6 +18,7 @@ class RC4():
     # Key-Scheduling Algorithm
     def KSA(self, key):
         keylength = len(key)
+        print("keylength",keylength, "veces", 256/keylength)
         S = [x for x in range(256)]
         j = 0
         for i in range(256):
@@ -43,12 +44,22 @@ class RC4():
         return nums_lst
 
     def text_to_bytes(self,s):
-        return [ord(c) for c in s]
-    
+        k = []
+        for i in range(0 ,len(s), 2):
+            k.append(int(s[i]+s[i+1], 16))
+        print(k)
+        return k
+
+    #     return [ord(c) for c in s]
+    #     key_in_hex = int(key,16)
+    # for
 
     def run(self):
         result = ""
         S = self.KSA(self.key)
+        print("S:",S)
+        print(len(S))
+        print(16*16)
         keystream =  self.PRGA(S)
 
         # ENCRIPTAR
@@ -59,9 +70,9 @@ class RC4():
                 tmp_states.append(current_state)  # CODE REQUIREMENT NOT FOR THE ALGORITHM 
                 value = int(ord(c) ^ current_state)
                 result += str(hex(value))
-            print("\nCIFRANDO")
-            print("ESTADO INICIAL: ", tmp_states[0])
-            print("ESTADO FINAL: ", tmp_states[len(tmp_states)-1])
+            # print("\nCIFRANDO")
+            # print("ESTADO INICIAL: ", tmp_states[0])
+            # print("ESTADO FINAL: ", tmp_states[len(tmp_states)-1])
             return result
 
         # DESENCRIPTAR
@@ -74,9 +85,9 @@ class RC4():
                 value = int(int(item,16) ^ current_state)
                 result += chr(value)
             print("\nDESCIFRANDO")
-            print("ESTADO INICIAL: ", tmp_states[0])
-            print("ESTADO FINAL: ", tmp_states[len(tmp_states)-1])
-            print("TODOS LOS ESTADOS: ", tmp_states)
+            # print("ESTADO INICIAL: ", tmp_states[0])
+            # print("ESTADO FINAL: ", tmp_states[len(tmp_states)-1])
+            # print("TODOS LOS ESTADOS: ", tmp_states)
             return result
 
 
@@ -109,15 +120,37 @@ if __name__ == '__main__':
     #key = 'Wiki'
     #message = 'pedia'
     message = "POR MI RAZA HABLARA EL ESPIRITU"
-    key = "EFCDAB8967543201"
+    # message = """ 
+    # 1231231231231231231231231231231231312312312313131231231231231231232132321321321312323123
+    # 1231231231231231231231231231231231312312312313131231231231231231232132321321321312323123
+    # 1231231231231231231231231231231231312312312313131231231231231231232132321321321312323123
+    # 1231231231231231231231231231231231312312312313131231231231231231232132321321321312323123
+    # 1231231231231231231231231231231231312312312313131231231231231231232132321321321312323123
+    # 1231231231231231231231231231231231312312312313131231231231231231232132321321321312323123
+    # 1231231231231231231231231231231231312312312313131231231231231231232132321321321312323123
+    # """
+    #key = "EFCDAB8967543201"
+    key="EFDCAB8976452311"
+    
     print("-------------")
     print("\nMensaje a cifrar: " + message)
-    encrypt = RC4(key,message,ENCRYPT)
+    encrypt = RC4(key, message,ENCRYPT)
     ciphered = encrypt.run()
 
-    decrypt = RC4(key,ciphered,DECRYPT)
+    decrypt = RC4(key, ciphered,DECRYPT)
     deciphered = decrypt.run()
     
     print("\nCIFRADO: " + hex_mask(ciphered))
     print("\nDESCIFRADO: " + deciphered)
     print("-------------\n")
+
+import numpy as np
+import pandas as pd 
+
+print("TO EXCEL TABLE")
+x = np.array(
+    [13, 29, 106, 99, 253, 199, 240, 207, 254, 227, 97, 22, 27, 54, 94, 81, 80, 62, 250, 79, 151, 134, 179, 98, 45, 91, 83, 111, 200, 193, 35, 181, 168, 31, 37, 43, 58, 180, 84, 206, 137, 191, 148, 72, 201, 76, 140, 1, 217, 145, 178, 110, 204, 90, 96, 210, 104, 88, 17, 243, 75, 164, 133, 14, 223, 252, 71, 170, 100, 109, 87, 56, 11, 69, 9, 183, 92, 132, 16, 36, 23, 198, 135, 159, 105, 5, 78, 173, 251, 187, 123, 129, 50, 138, 49, 126, 205, 70, 242, 108, 157, 154, 101, 234, 68, 237, 53, 177, 18, 238, 146, 64, 21, 139, 42, 162, 112, 221, 30, 7, 103, 93, 95, 216, 212, 246, 115, 38, 192, 215, 244, 51, 142, 247, 12, 195, 197, 186, 214, 188, 122, 203, 44, 219, 196, 63, 73, 85, 48, 74, 147, 60, 202, 225, 113, 34, 150, 245, 182, 156, 169, 107, 144, 0, 184, 190, 59, 128, 232, 189, 175, 121, 120, 211, 40, 249, 167, 231, 131, 57, 20, 218, 224, 33, 220, 230, 15, 235, 3, 67, 32, 209, 119, 52, 65, 86, 185, 241, 208, 116, 55, 39, 239, 41, 213, 149, 163, 8, 46, 236, 66, 152, 10, 47, 194, 114, 171, 89, 102, 124, 26, 118, 158, 174, 233, 255, 141, 130, 172, 248, 228, 143, 25, 155, 6, 2, 166, 161, 28, 117, 125, 82, 4, 226, 153, 160, 176, 61, 165, 222, 19, 77, 24, 127, 229, 136]
+)
+reshape = np.reshape(x, (16, 16))
+pd.DataFrame(reshape).to_csv("file.csv")
+
