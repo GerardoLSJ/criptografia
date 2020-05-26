@@ -1,7 +1,18 @@
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as do_login
+from django.contrib.auth import logout as do_logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
+from rest_framework.permissions import IsAuthenticated
+from django.template import loader
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views import View
 from ac.serializers import UserSerializer, GroupSerializer
+from .forms import CustomAuthenticationForm
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -20,3 +31,52 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+# Class based views
+class SignView(View):
+    
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            template = loader.get_template('index.html')
+            context = {
+                'user_name': 'Gerardo'
+            }
+            return HttpResponse(template.render(context, request))
+        else:
+            return HttpResponseRedirect('/login/')
+
+    def post(self, request, *args, **kwargs):
+        print('Firma View')
+        pass
+
+class LoginView(View):
+    initial = {'key': 'value'}
+    template_name = 'login.html'
+
+    # if a GET, we'll create a blank form
+    def get(self, request, *args, **kwargs):
+        form = CustomAuthenticationForm(initial=self.initial)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = CustomAuthenticationForm(data=request.POST)
+        print('Form {}'.format(form))
+        
+        if not form.is_valid():
+            return render(request, self.template_name, {'form': form}) 
+        
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+        print('USER {}'.format(user))
+        if user is not None:
+            do_login(request, user)
+            #return redirect('/')
+            return HttpResponseRedirect('/firmar/')
+
+
+class LogoutView(View):
+    def get(self, request, *args, **kwargs):
+        do_logout(request)
+        return HttpResponseRedirect('/login/')
