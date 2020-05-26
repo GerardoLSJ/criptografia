@@ -30,8 +30,6 @@ def encode(payload_data):
     json_payload = json.dumps(payload_dict, separators=(",", ":")).encode("utf-8")
     payload = urlsafe_b64encode(json_payload).replace(b"=", b"")
     segments.append(payload)
-
-    # SECRET = b'abc123'
     signing_input = b".".join(segments)
 
     sig = hmac.new( SECRET, signing_input, sha256)
@@ -39,8 +37,6 @@ def encode(payload_data):
     segments.append(signature)
 
     token = b'.'.join(segments)
-    # print("TOKEN:")
-    # print(token)
     return token
 
 # test = b"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.xpCS8TTq1a53OIps1ByTdm6Sh-A1ZoCId3e2YYWjapU"
@@ -49,9 +45,6 @@ def decode(jwt):
     header_segment, payload_segment = signing_input.split(b".", 1)
     header_data = base64url_decode(header_segment)
     payload = base64url_decode(payload_segment)
-    # print("DECODED:")
-    # print(header_data)
-    # print(payload)
 
     sig = hmac.new( SECRET, signing_input, sha256)
     signature = urlsafe_b64encode(sig.digest()).replace(b"=", b"")

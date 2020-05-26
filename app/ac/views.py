@@ -12,7 +12,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from ac.serializers import UserSerializer, GroupSerializer
-from .forms import CustomAuthenticationForm
+from .forms import CustomAuthenticationForm, SignForm
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -38,11 +38,20 @@ class SignView(View):
     
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            template = loader.get_template('index.html')
+            template = loader.get_template('firmar.html')
             context = {
                 'user_name': 'Gerardo'
             }
-            return HttpResponse(template.render(context, request))
+            #return HttpResponse(template.render(context, request))
+            initial = {
+                "username": request.user.username,
+                "fistName":request.user.first_name,
+                "lastName": request.user.last_name,
+                "serverLocation": "MX"
+
+            }
+            form = SignForm(initial=initial)
+            return render(request, 'firmar.html', {'form': form})
         else:
             return HttpResponseRedirect('/login/')
 
