@@ -13,6 +13,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from ac.serializers import UserSerializer, GroupSerializer
 from .forms import CustomAuthenticationForm, SignForm
+from .jwt import encode as signDocument
+import time
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -39,16 +42,11 @@ class SignView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             template = loader.get_template('firmar.html')
-            context = {
-                'user_name': 'Gerardo'
-            }
-            #return HttpResponse(template.render(context, request))
             initial = {
                 "username": request.user.username,
                 "fistName":request.user.first_name,
                 "lastName": request.user.last_name,
                 "serverLocation": "MX"
-
             }
             form = SignForm(initial=initial)
             return render(request, 'firmar.html', {'form': form})
@@ -56,8 +54,21 @@ class SignView(View):
             return HttpResponseRedirect('/login/')
 
     def post(self, request, *args, **kwargs):
-        print('Firma View')
-        pass
+        if request.user.is_authenticated:
+            jwt_payload = {
+                'username': request.user.username,
+                'first_name': request.user.first_name,
+                'last_name': request.user.last_name,
+                'server_location': request.POST['serverLocation'],
+                'file_name': request.POST['fileName'],
+                'iat': time.time(),
+            }
+            e_signature = signDocument(jwt_payload)
+            return render(request, 'nueva_firma.html', {'e_signature':e_signature})
+            print('EFIRMA', e_signature)
+        else:
+            return HttpResponseRedirect('/login/')
+        
 
 class LoginView(View):
     initial = {'key': 'value'}
@@ -81,7 +92,6 @@ class LoginView(View):
         print('USER {}'.format(user))
         if user is not None:
             do_login(request, user)
-            #return redirect('/')
             return HttpResponseRedirect('/firmar/')
 
 
