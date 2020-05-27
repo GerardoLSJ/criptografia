@@ -2,9 +2,9 @@ import json
 import hmac
 from hashlib import sha256
 from base64 import urlsafe_b64encode, urlsafe_b64decode
-# from app.settings import SECRET_KEY
+from app.settings import SECRET_KEY
 
-SECRET_KEY = 'mg1sqmmv=d0t40%2c7)j9anuczm%5sp3b%om93ti30v%g3&i3n'
+# SECRET_KEY = 'mg1sqmmv=d0t40%2c7)j9anuczm%5sp3b%om93ti30v%g3&i3n'
 SECRET = SECRET_KEY.encode("utf-8")
 
 def encode(payload_data):

@@ -13,7 +13,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from ac.serializers import UserSerializer, GroupSerializer
 from .forms import CustomAuthenticationForm, SignForm
-
+from .jwt import encode, decode
+import time
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -35,29 +36,46 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 # Class based views
 class SignView(View):
-    
+
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
+            initial = {
+            "username": request.user.username,
+            "fistName":request.user.first_name,
+            "lastName": request.user.last_name,
+            "serverLocation": "MX"
+                }
             template = loader.get_template('firmar.html')
             context = {
                 'user_name': 'Gerardo'
             }
             #return HttpResponse(template.render(context, request))
-            initial = {
-                "username": request.user.username,
-                "fistName":request.user.first_name,
-                "lastName": request.user.last_name,
-                "serverLocation": "MX"
 
-            }
             form = SignForm(initial=initial)
             return render(request, 'firmar.html', {'form': form})
         else:
             return HttpResponseRedirect('/login/')
 
     def post(self, request, *args, **kwargs):
-        print('Firma View')
-        pass
+        initial = {
+            "username": request.user.username,
+            "fistName":request.user.first_name,
+            "lastName": request.user.last_name,
+            "serverLocation": "MX"
+            }
+        form = SignForm(data=request.POST)
+        if form.is_valid():
+            # test_payload = {'server_location':'usa', 'username':'lsjg', 'first_name':'Gerardo', 'last_name':'Lopez', 'file_name':'Proyecto Final', 'iat': 1422779638}
+            payload = {
+                'file_name': form.cleaned_data['fileName'],
+                'iat': int(time.time()),
+                'first_name': form.cleaned_data['fistName'],
+                'last_name': form.cleaned_data['lastName'],
+                'username': form.cleaned_data['username'],
+                'server_location': form.cleaned_data['serverLocation'],
+            }
+            key = encode(payload)
+            return render(request, 'firmar.html', {'form': form, 'key':key.decode("utf-8") })
 
 class LoginView(View):
     initial = {'key': 'value'}
