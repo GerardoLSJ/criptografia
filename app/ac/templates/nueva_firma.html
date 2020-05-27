@@ -9,23 +9,16 @@
 </head>
 
 <body>
-
   <div class="container-fluid">
     <div class="row text-center justify-content-center align-items-center">
       <div class="col-md-6">
-        <p> Bienvenido al sistema <b>{{request.user.first_name |add:" " |add:request.user.last_name}}</b>.</p> 
         <p> Esta página es exclusiva para usuarios registrados.</p>
-        <a class="btn btn-danger" href="/logout">Cerrar sesión</a>
-        <hr>
-        <form action="/firmar/" method="post">
-          {% csrf_token %}
-          {{ form.as_p }} 
-          <button type="submit" class="btn btn-success">Generar e-firma</button>
-        </form>
+        <p>Se ha generado la siguiente firma electrónica: </p> 
+        {{ e_signature }}
+        <a class="btn btn-primary" href="/firmar">Volver</a>
       </div>
     </div>
   </div>
-
 </body>
 
 </html>

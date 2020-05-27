@@ -37,7 +37,7 @@ def encode(payload_data):
     segments.append(signature)
 
     token = b'.'.join(segments)
-    return token
+    return token.decode("utf-8") # cast Bytes to string
 
 # test = b"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.xpCS8TTq1a53OIps1ByTdm6Sh-A1ZoCId3e2YYWjapU"
 def decode(jwt):

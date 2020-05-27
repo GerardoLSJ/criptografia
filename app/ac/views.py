@@ -13,7 +13,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from ac.serializers import UserSerializer, GroupSerializer
 from .forms import CustomAuthenticationForm, SignForm
-from .jwt import encode, decode
+from .jwt import encode as signDocument
 import time
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -46,27 +46,21 @@ class SignView(View):
             "serverLocation": "MX"
                 }
             template = loader.get_template('firmar.html')
-            context = {
-                'user_name': 'Gerardo'
+            initial = {
+                "username": request.user.username,
+                "fistName":request.user.first_name,
+                "lastName": request.user.last_name,
+                "serverLocation": "MX"
             }
-            #return HttpResponse(template.render(context, request))
-
             form = SignForm(initial=initial)
             return render(request, 'firmar.html', {'form': form})
         else:
             return HttpResponseRedirect('/login/')
 
-    def post(self, request, *args, **kwargs):
-        initial = {
-            "username": request.user.username,
-            "fistName":request.user.first_name,
-            "lastName": request.user.last_name,
-            "serverLocation": "MX"
-            }
+    def post(self, request, *args, **kwargs):        
         form = SignForm(data=request.POST)
-        if form.is_valid():
-            # test_payload = {'server_location':'usa', 'username':'lsjg', 'first_name':'Gerardo', 'last_name':'Lopez', 'file_name':'Proyecto Final', 'iat': 1422779638}
-            payload = {
+        if request.user.is_authenticated and form.is_valid():
+            jwt_payload = {
                 'file_name': form.cleaned_data['fileName'],
                 'iat': int(time.time()),
                 'first_name': form.cleaned_data['fistName'],
@@ -74,8 +68,12 @@ class SignView(View):
                 'username': form.cleaned_data['username'],
                 'server_location': form.cleaned_data['serverLocation'],
             }
-            key = encode(payload)
-            return render(request, 'firmar.html', {'form': form, 'key':key.decode("utf-8") })
+            e_signature = signDocument(jwt_payload)
+            return render(request, 'nueva_firma.html', {'e_signature':e_signature})
+            print('EFIRMA', e_signature)
+        else:
+            return HttpResponseRedirect('/login/')
+        
 
 class LoginView(View):
     initial = {'key': 'value'}
@@ -99,7 +97,6 @@ class LoginView(View):
         print('USER {}'.format(user))
         if user is not None:
             do_login(request, user)
-            #return redirect('/')
             return HttpResponseRedirect('/firmar/')
 
 
