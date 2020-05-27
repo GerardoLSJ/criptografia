@@ -13,7 +13,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from ac.serializers import UserSerializer, GroupSerializer
 from .forms import CustomAuthenticationForm, SignForm
-from .jwt import encode as signDocument
+from .jwt import encode as signDocument, decode as verifyDocument
 import time
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -34,6 +34,10 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
+class validateSignature(View):
+    def get(self, request, *args, **kwargs):
+        valid = verifyDocument(kwargs["str"].encode('utf-8'))
+        return render(request, 'validar.html',{'valid':valid})
 # Class based views
 class SignView(View):
 

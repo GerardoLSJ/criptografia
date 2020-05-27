@@ -33,6 +33,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('firmar/', views.SignView.as_view(), name='sign')
+    path('firmar/', views.SignView.as_view(), name='sign'),
+    path('validar/<str>/', views.validateSignature.as_view(), name='validar'),
 ]
 
