@@ -11,14 +11,43 @@
 <body>
   <div class="container-fluid">
     <div class="row text-center justify-content-center align-items-center">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <p> Esta página es exclusiva para usuarios registrados.</p>
         <p>Se ha generado la siguiente firma electrónica: </p> 
-        {{ e_signature }}
-        <a class="btn btn-primary" href="/firmar">Volver</a>
+        
       </div>
+
+      <div class="col-md-8"  style="margin-bottom: 30px;">
+        {% if e_signature %}
+        <button type="" onclick="copyDivToClipboard('jwtout')" class="btn btn-success">Copiar Token</button>
+        <code id="jwtout"> {{e_signature}}</code>
+        {% endif %}
+      </div>
+
+      <div class="col-md-12" style="margin-top: 30px;">
+        {% if e_signature %}
+        <button type="" onclick="copyDivToClipboard('urljwt')" class="btn btn-success">Copiar URL</button>
+        <a href="http://localhost:8000/validar/{{e_signature}}" 
+            style="white-space: pre-wrap;word-wrap:break-word;"
+            id="urljwt"> http://localhost:8000/validar/{{e_signature}}</a>
+        
+        {% endif %}
+      </div>
+
     </div>
   </div>
+
+  <script>
+    function copyDivToClipboard(id) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(id));
+        window.getSelection().removeAllRanges(); // clear current selection
+        window.getSelection().addRange(range); // to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();// to deselect
+        alert("Se ha copiado al portapales.");
+    }
+</script>
 </body>
 
 </html>
