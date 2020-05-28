@@ -34,23 +34,15 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-
+# Class based views
 class validateSignature(View):
     def get(self, request, *args, **kwargs):
         valid = verifyDocument(kwargs["str"].encode('utf-8'))
         return render(request, 'validar.html',{'valid':valid[0], 'payload':json.loads(valid[1].decode('utf-8'))})
-# Class based views
-class SignView(View):
 
+class SignView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            initial = {
-            "username": request.user.username,
-            "fistName":request.user.first_name,
-            "lastName": request.user.last_name,
-            "serverLocation": "MX"
-                }
-            template = loader.get_template('firmar.html')
             initial = {
                 "username": request.user.username,
                 "fistName":request.user.first_name,

@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AUTORIDAD CERTIFICADORA</title>
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -13,31 +14,47 @@
     <div class="row text-center justify-content-center align-items-center">
       <div class="col-md-8">
         <p> Esta página es exclusiva para usuarios registrados.</p>
-        <p>Se ha generado la siguiente firma electrónica: </p> 
-        
+        <h4>Se ha generado el siguiente token</h4>
       </div>
 
       <div class="col-md-8"  style="margin-bottom: 30px;">
         {% if e_signature %}
         <button type="" onclick="copyDivToClipboard('jwtout')" class="btn btn-success">Copiar Token</button>
-        <code id="jwtout"> {{e_signature}}</code>
+        <code id="jwtout"> {{ e_signature }}</code>
         {% endif %}
       </div>
-
+      
       <div class="col-md-12" style="margin-top: 30px;">
+        <h4>El siguiente enlace contiene la validación de la firma electrónica</h4>
         {% if e_signature %}
         <button type="" onclick="copyDivToClipboard('urljwt')" class="btn btn-success">Copiar URL</button>
-        <a href="http://localhost:8000/validar/{{e_signature}}" 
+        <a target="_blank" href="{{ request.get_host }}/validar/{{ e_signature }}"
             style="white-space: pre-wrap;word-wrap:break-word;"
-            id="urljwt"> http://localhost:8000/validar/{{e_signature}}</a>
-        
+            id="urljwt">http://{{ request.get_host }}/validar/{{ e_signature }}</a>
         {% endif %}
       </div>
+      
+      {% if e_signature %}
+      <div class="row text-center justify-content-center align-items-center">
+        <div class="col-md-12" style="margin-top: 30px;"> 
+          <h4>Adicionalmente, descarga el siguiente QR de la firma electrónica</h4>
+          <div class="qrcode text-center justify-content-center align-items-center" id="qr"></div>
+        </div>
+      </div>
+      {% endif %}
 
     </div>
   </div>
+  
+  <br>
 
+  {% load static %}
+  <script type="text/javascript" src="{% static 'js/qrcode.js' %}"></script>
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let qrcode = new QRCode(document.getElementById("qr"), "http://{{ request.get_host }}/validar/{{ e_signature }}");
+    });
+
     function copyDivToClipboard(id) {
         var range = document.createRange();
         range.selectNode(document.getElementById(id));
