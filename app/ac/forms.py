@@ -7,10 +7,10 @@ class CustomAuthenticationForm(AuthenticationForm):
   password = forms.CharField(label='Contraseña', widget=PasswordInput(attrs={'class': 'form-control','placeholder':'Constraseña'}))
 
 class SignForm(forms.Form):
-  fileName = forms.CharField(label='Nombre del archivo a firmar',  
+  fileName = forms.CharField(label='Título del archivo a firmar',  
                               max_length=100,
                               widget=TextInput(
-                                attrs={'class': 'form-control','placeholder':'Nombre del archivo a firmar'}
+                                attrs={'class': 'form-control','placeholder':'Título del archivo a firmar'}
                               )
   )
   fistName = forms.CharField(label='Nombre(s)',  

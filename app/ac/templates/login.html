@@ -6,12 +6,30 @@
   <title>AUTORIDAD CERTIFICADORA</title>
   <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
 
+  <div class="container-fluid" style="margin-top: 3em;">
+    <header>
+      <div class="container">
+        <div class="row justify-content-around align-items-center">
+          <div class="col-6 text-center">
+            <h4 class="font-weight-bold">Facultad de Ingeniería</h4>
+            <h6 >AUTORIDAD CERTIFICADORA</h6>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
   <div class="container-fluid">
-    <div class="row text-center justify-content-center align-items-center">
-      <div class="col-md-6">
+    <div class="row text-center justify-content-center align-items-center" style="margin-top: 2em;">
+      <div class="col-sm-8 mt-3 text-center">
+        <i class="fas fa-users fa-4x"></i>
+      </div>
+      <div class="col-md-6" style="margin-top: 2em;">
         <form action="/login/" method="post"> 
           {% csrf_token %} 
           {{ form.as_p }} 
