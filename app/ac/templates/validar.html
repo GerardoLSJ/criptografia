@@ -18,24 +18,23 @@
         <div class="alert alert-success">
           La firma es valida
         </div>
+        <div> 
+          Título del documento firmado: <p>{{payload.file_name}}</p> 
+          Nombre(s) de quien firma: <p>{{payload.fist_name}}</p> 
+          Apellido(s) de quien firma: <p>{{payload.last_name}}</p> 
+          Nombre de usuario: <p>{{payload.username}}</p> 
+          Servidor que emitió firma: <p>{{payload.server_location}}</p>
+          <!-- Fecha de emisión: <p>{{payload.iat | date:"SHORT_DATE_FORMAT" }}</p> -->
+        </div>
         {% else %}
           <div class="alert alert-danger">
             La firma es invalida
           </div>
+          <div>
+            <h5>El contenido de la firma ha sido modificado</h5>
+          </div>
         {%endif%}
-
-        <div>
-          Título del documento firmado: <p>{{payload.file_name}}</p>
-          Nombre(s) de quien firma: <p>{{payload.fist_name}}</p>
-          Apellido(s) de quien firma: <p>{{payload.last_name}}</p>
-          Nombre de usuario: <p>{{payload.username}}</p>
-          Servidor que emitió firma: <p>{{payload.server_location}}</p>
-          <!-- Fecha de emisión: <p>{{payload.iat | date:"SHORT_DATE_FORMAT" }}</p> -->
-        </div>
-
-
           
-        </form>
       </div>
     </div>
   </div>
