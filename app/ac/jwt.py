@@ -50,9 +50,9 @@ def decode(jwt):
     signature = urlsafe_b64encode(sig.digest()).replace(b"=", b"")
 
     if(crypto_segment == signature):
-        return True
+        return [True, payload]
     else:
-        return False
+        return [False, payload]
 
 def base64url_decode(input):
     rem = len(input) % 4

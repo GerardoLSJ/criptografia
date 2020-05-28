@@ -4,31 +4,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>AUTORIDAD CERTIFICADORA</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-top: 100px;">
     <div class="row text-center justify-content-center align-items-center">
       <div class="col-md-6">
-        <!-- <p> Bienvenido al sistema <b>{{request.user.first_name |add:" " |add:request.user.last_name}}</b>.</p> 
-        <p> Esta página es exclusiva para usuarios registrados.</p>
-        <a class="btn btn-danger" href="/logout">Cerrar sesión</a>
-        <hr>
-        <form action="/firmar/" method="post">
-          {% csrf_token %}
-          {{ form.as_p }}  -->
-          <button type="submit" class="btn btn-success">Generar e-firma</button>
+        {% if valid %}
+        <div class="alert alert-success">
+          La firma es valida
+        </div>
+        {% else %}
+          <div class="alert alert-error">
+            La firma es invalida
+          </div>
+        {%endif%}
 
-          {{valid}}
+        <div>
+          Nombre del documento: <p>{{payload.file_name}}</p>
+          Nombre(s) de quien firma: <p>{{payload.fist_name}}</p>
+          Apellido(s) de quien firma: <p>{{payload.last_name}}</p>
+          Nombre de usuario: <p>{{payload.username}}</p>
+          Servidor que emitio: <p>{{payload.server_location}}</p>
+          <!-- Fecha de emisión: <p>{{payload.iat | date:"SHORT_DATE_FORMAT" }}</p> -->
+        </div>
+
+
           
         </form>
       </div>
     </div>
   </div>
 
+  <style>
+    p{
+      font-weight: 700;
+    }
+  </style>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 
 from collections import OrderedDict 
-
 def removeDupWithOrder(str): 
     return "".join(OrderedDict.fromkeys(str)) 
 
@@ -25,8 +24,9 @@ def KeyCaesar(text,key,op):
     return result 
   
 #Prueba
-mensaje = "ABCDXYZ"
-key = "ZZZRRFG"
+mensaje = "LOPEZSANTIBAÑEZJIMENEZLUISG"
+print("longitud:",len(mensaje))
+key = "INGENIERIA"
 print("Mensaje  : " + mensaje )
 cifrado = KeyCaesar(mensaje,key,0)
 print("Cifrado: " + cifrado )

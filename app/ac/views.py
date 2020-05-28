@@ -15,6 +15,7 @@ from ac.serializers import UserSerializer, GroupSerializer
 from .forms import CustomAuthenticationForm, SignForm
 from .jwt import encode as signDocument, decode as verifyDocument
 import time
+import json
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -37,7 +38,7 @@ class GroupViewSet(viewsets.ModelViewSet):
 class validateSignature(View):
     def get(self, request, *args, **kwargs):
         valid = verifyDocument(kwargs["str"].encode('utf-8'))
-        return render(request, 'validar.html',{'valid':valid})
+        return render(request, 'validar.html',{'valid':valid[0], 'payload':json.loads(valid[1].decode('utf-8'))})
 # Class based views
 class SignView(View):
 

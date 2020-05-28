@@ -1,7 +1,7 @@
 import numpy as np 
 from sympy import Matrix
 
-LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
+LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789'
 # Llave 
 keyMatrix = [[0] * 3 for i in range(3)] 
 # Mensaje
@@ -13,13 +13,13 @@ def getKeyMatrix(key):
     k = 0
     for i in range(3): 
         for j in range(3): 
-            keyMatrix[i][j] = LETTERS.find(key[k]) #ord(key[k]) % 65
+            keyMatrix[i][j] = LETTERS.find(key[k])
             k += 1
     return keyMatrix
   
 # Following function encrypts the message 
 def encrypt(messageVector): 
-    cipherMatrix = (Matrix(keyMatrix) * Matrix(messageVector)) % 27
+    cipherMatrix = (Matrix(keyMatrix) * Matrix(messageVector)) % 37
     return cipherMatrix.tolist()
 
 def HillCipher(message, key): 
@@ -55,8 +55,12 @@ def HillCipher(message, key):
 
 def HillDecipher(data, key):
     mat = Matrix(keyMatrix)
-    inv = mat.inv_mod(27) # cualquier modulo
-    res = np.dot(inv, data["cifrado"]) % 27
+    print("DESCIFRADO:")
+    print("key matrix:",mat)
+    print("adjunta:",mat.adjugate() % 37)
+    inv = mat.inv_mod(37) # cualquier modulo
+    print("INVERSA: ", inv)
+    res = np.dot(inv, data["cifrado"]) % 37
     flat = res.flatten()
     #print("res",flat)
     DecipherText = [] 
@@ -68,13 +72,29 @@ def HillDecipher(data, key):
     }
 
 #mensaje a encriptar
-mensaje = "SANTIBAÑEZPORMIRAZAHABLARAELESPIRITU"
-
+mensaje = "LOJL970403FR"
+print("longitud: ", len(mensaje))
 # Get the key 
-key = "GYBNQKURP"
+key = "ALEXPECKS"
 print("\nMENSAJE DE ENTRADA: \t\t",mensaje)
 data = HillCipher(mensaje, key) 
 print("\nCIFRADO: \t\t\t",data["mensaje"])
 descifrado = HillDecipher(data, key)
 print("\nMENSAJE DE DESCIFRADO: \t\t", descifrado["mensaje"])
 # descifrado = getKeyMatrix()
+
+M = [24, 25, 15, 3, 6, 2,29, 2, 13]
+for x in M:
+    print( LETTERS[x])
+
+X
+Y
+O
+
+D
+G
+C
+
+2
+C
+N

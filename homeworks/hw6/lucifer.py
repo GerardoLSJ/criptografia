@@ -11,9 +11,9 @@
 
 # Global variables
 LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'
-PLAIN_TEXT = 'PORMIRAZAHABLARAELESPIRITU'
+PLAIN_TEXT = 'LOPEZSANTIBAÑEZJIMENEZLU'
 BLOCK_SIZE = 8
-ROUNDS = 4
+ROUNDS = 16
 SHIFT = 1
 
 
@@ -87,16 +87,18 @@ def lucifer_decrypt(text, permute_order, shift, times = 4): # default times = 4 
 
 def main(): 
 	# ENCRYPTION 
-	permute_order_encrypt = [4, 2, 1, 3]
+	#permute_order_encrypt = [4, 2, 1, 3]
+	permute_order_encrypt = [2, 3, 1, 4]
 	lucifer_encrypted_text = lucifer_encrypt(PLAIN_TEXT, permute_order_encrypt, SHIFT, ROUNDS) 
 	print('Encrypt permute order: {}'.format(permute_order_encrypt))
 
 	# DECRYPTION 
-	permute_order_decrypt = [3, 2, 4, 1]
+	permute_order_decrypt = [3, 1, 2, 4]
 	print('Decrypt permute order: {}'.format(permute_order_decrypt))
 
 	# RESULTS (SUMMARY)
 	print('Plain text: {}'.format(PLAIN_TEXT))
+	print('Longitud: {}'.format(len(PLAIN_TEXT)))
 	print('Encrypted text: {}'.format(lucifer_encrypted_text))
 	print('Decrypted Text: {}'.format(lucifer_decrypt(lucifer_encrypted_text, permute_order_decrypt, SHIFT, ROUNDS))) 
 

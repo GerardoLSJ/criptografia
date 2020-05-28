@@ -24,7 +24,8 @@ def SimpleCaesar(text,op):
     return result 
   
 #Prueba
-mensaje = "ABCDXYZ"
+mensaje = "LOPEZSANTIBAÑEZJIMENEZLUISG"
+print("longitud:",len(mensaje))
 print("Mensaje  : " + mensaje )
 cifrado = SimpleCaesar(mensaje,0)
 print("Cifrado: " + cifrado )
