@@ -8,7 +8,7 @@ class CustomAuthenticationForm(AuthenticationForm):
 
 class SignForm(forms.Form):
   fileName = forms.CharField(label='Título del archivo a firmar',  
-                              max_length=100,
+                              max_length=255,
                               widget=TextInput(
                                 attrs={'class': 'form-control','placeholder':'Título del archivo a firmar'}
                               )
